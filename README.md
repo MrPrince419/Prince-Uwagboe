@@ -1,4 +1,4 @@
-# Prince Uwagboe Portfolio Website
+# Prince Uwagboe Personal Website
 
 Welcome to the GitHub repository for my personal website, hosted at [https://mrprince419.github.io/Prince-Uwagboe/](https://mrprince419.github.io/Prince-Uwagboe/). This site serves as a showcase of my work, skills, experiences and everything about me.
 

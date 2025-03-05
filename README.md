@@ -1,37 +1,22 @@
-# Prince Uwagboe Personal Website
+# Prince Uwagboe Portfolio
 
-Welcome to the GitHub repository for my personal website, hosted at [https://mrprince419.github.io/Prince-Uwagboe/](https://mrprince419.github.io/Prince-Uwagboe/). This site serves as a showcase of my work, skills, experiences and everything about me.
+Welcome to my personal portfolio! This project showcases my skills as a Front-End Developer, featuring my work experience, projects, technical skills, and insights through a blog section. Built with HTML, CSS, and JavaScript, this portfolio is designed to be responsive, accessible, and user-friendly across all devices.
 
-## About
-
-This website is a personal project designed to highlight my journey, projects, and professional background. Whether you're here to learn more about me, explore my portfolio, or get in touch, I’m glad you stopped by!
+## Live Demo
+[Visit my portfolio](https://mrprince419.github.io/Prince-Uwagboe/)
 
 ## Features
-
-- **Home Page**: A brief introduction to who I am and what I do.
-- **Portfolio/Projects**: A collection of my work, including descriptions and links to projects (where applicable).
-- **About Me**: Insights into my background, skills, and interests.
-- **Contact**: Ways to reach out to me for collaboration or inquiries.
+- **Responsive Design**: Optimized for all devices, including small screens like the iPhone SE.
+- **Smooth Scrolling**: Seamless navigation with smooth scrolling for an enhanced user experience.
+- **Interactive Elements**: Includes a functional contact form and a back-to-top button.
+- **Accessibility**: Built with accessibility in mind, ensuring navigability for all users.
+- **Projects Showcase**: Highlights key projects with detailed descriptions, technologies used, and links to source code.
+- **Blog Section**: Shares insights on my technical journey and problem-solving experiences.
 
 ## Technologies Used
-
-- **HTML5**: For structuring the content.
-- **CSS3**: For styling and layout design.
-- **JavaScript**: For interactivity and dynamic elements (if applicable).
-- **GitHub Pages**: For hosting and deployment.
-
-## Contributing
-
-This is a personal project, but I’m open to feedback! If you have suggestions or improvements, feel free to:
-- Open an issue in this repository.
-- Submit a pull request with your proposed changes
-
-## Getting Started
-
-To view the live site, simply visit: [https://mrprince419.github.io/Prince-Uwagboe/](https://mrprince419.github.io/Prince-Uwagboe/).
-
-If you'd like to run this project locally or contribute:
-
- **Clone the Repository**:
-   ```bash
-   git clone https://github.com/mrprince419/Prince-Uwagboe.git
+- **HTML**: Structure of the portfolio.
+- **CSS**: Styling with a focus on responsiveness and accessibility.
+- **JavaScript**: Interactivity features like smooth scrolling, form submission, and dynamic navigation.
+- **Font Awesome**: Icons for social links and navigation.
+- **Google Fonts**: Poppins font for a modern look.
+- **Formspree**: Contact form submission handling.

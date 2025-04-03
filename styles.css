@@ -689,7 +689,7 @@ body {
 /* Experience Section */
 .timeline {
   position: relative;
-  padding-left: 2rem;
+  padding-left: 2.5rem;
   margin-top: 2rem;
   z-index: 2;
 }
@@ -698,28 +698,30 @@ body {
   content: "";
   position: absolute;
   top: 0;
-  left: 8px;
+  left: 12px;
   height: 100%;
   width: 2px;
-  background-color: var(--accent);
+  background: linear-gradient(to bottom, var(--background-light), var(--accent), var(--background-light));
   z-index: 1;
 }
 
 .timeline-entry {
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   z-index: 2;
 }
 
 .timeline-marker {
   position: absolute;
   top: 0;
-  left: -2rem;
-  width: 10px;
-  height: 10px;
+  left: -2.5rem;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   background-color: var(--accent);
+  border: 3px solid var(--background-light);
   z-index: 3;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 .timeline-content {
@@ -727,8 +729,8 @@ body {
   border-radius: var(--card-radius);
   padding: 1.5rem;
   box-shadow: var(--shadow);
-  transform: translateX(0); /* Reset initial transform */
-  opacity: 1; /* Ensure content is visible */
+  transform: translateX(0);
+  opacity: 1;
   transition: transform var(--transition-speed), box-shadow var(--transition-speed);
   position: relative;
   z-index: 2;
@@ -747,26 +749,38 @@ body {
   animation: slideLeft 0.5s ease-in-out 0.6s forwards;
 }
 
+.section.visible .timeline-entry:nth-child(4) .timeline-content {
+  animation: slideLeft 0.5s ease-in-out 0.8s forwards;
+}
+
 .timeline-content:hover {
-  transform: translateY(-2px) !important;
+  transform: translateY(-5px) !important;
   box-shadow: var(--shadow-medium);
 }
 
 .timeline-date {
   font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   color: var(--text-dark);
   position: relative;
   z-index: 2;
 }
 
 .timeline-content h3 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   position: relative;
   z-index: 2;
+}
+
+.timeline-content h3 i {
+  color: var(--accent);
+  font-size: 1rem;
 }
 
 .timeline-content ul {
@@ -784,6 +798,15 @@ body {
   color: var(--text-dark);
   position: relative;
   z-index: 2;
+}
+
+.company-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
 }
 
 /* Projects Section */

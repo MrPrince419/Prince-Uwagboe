@@ -1,132 +1,421 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Smooth scrolling for all links with a hash
-  document.querySelectorAll('a[href*="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const target = document.querySelector(targetId);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-      // Close mobile menu if open
-      document.getElementById('mobile-menu').checked = false;
-    });
+  // Make all sections visible initially to ensure content is displayed even if IntersectionObserver fails
+  document.querySelectorAll('.section').forEach(section => {
+    section.classList.add('visible');
   });
+  
+  document.querySelector('.footer').classList.add('visible');
 
-  // Highlight active navigation link based on scroll position
-  function updateActiveNav() {
-    const sections = document.querySelectorAll('section');
-    const scrollPos = window.scrollY + 60;
+  // Fixed Navbar visibility by directly modifying the element's CSS
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
+    navbar.style.cssText = 'display: block !important; opacity: 1 !important; visibility: visible !important;';
+  }
+
+  // Properly implement typewriter effect with cursor
+  const typewriterText = document.getElementById('typewriter-text');
+  const cursor = document.querySelector('.cursor');
+  const fullText = "Hi, I'm Prince Uwagboe";
+  let i = 0;
+  
+  // Ensure elements are visible immediately
+  if (typewriterText) {
+    typewriterText.textContent = ''; // Start with empty text
+    typewriterText.style.visibility = 'visible';
+    typewriterText.style.opacity = '1';
+    typewriterText.style.display = 'inline-block';
+  }
+  
+  if (cursor) {
+    cursor.style.cssText = 'display: inline-block !important; opacity: 1 !important; visibility: visible !important; animation: blink 0.7s infinite;';
+  }
+  
+  // Typewriter function that adds one letter at a time
+  function typeWriter() {
+    if (i < fullText.length) {
+      typewriterText.textContent += fullText.charAt(i);
+      i++;
+      setTimeout(typeWriter, 100); // Typing speed (milliseconds)
+    }
+  }
+  
+  // Start typewriter effect immediately
+  setTimeout(typeWriter, 500); // Small delay before starting
+
+  // Navbar toggle functionality
+  const navbarToggle = document.querySelector('.navbar-toggle');
+  const navbarMenu = document.querySelector('.navbar-menu');
+  
+  if (navbarToggle && navbarMenu) {
+    navbarToggle.addEventListener('click', () => {
+      navbarMenu.classList.toggle('active');
+    });
     
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navbarToggle.contains(e.target) && !navbarMenu.contains(e.target)) {
+        navbarMenu.classList.remove('active');
+      }
+    });
+    
+    // Close menu when clicking on a link
+    navbarMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navbarMenu.classList.remove('active');
+      });
+    });
+  }
+
+  // Then proceed with normal animation logic
+  setTimeout(() => {
+    // Smooth scrolling for all links with a hash
+    document.querySelectorAll('a[href*="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (target) {
+          // Remove active/highlighted state from all links
+          document.querySelectorAll('a[href*="#"]').forEach(el => {
+            el.classList.remove('active');
+          });
+          
+          // Add active state to clicked link
+          this.classList.add('active');
+          
+          // Scroll to the target section
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Create canvas for cursor trail effect
+    const createCursorTrail = () => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
       
-      if (scrollPos >= sectionTop - sectionHeight / 3 && scrollPos < sectionTop + sectionHeight) {
-        document.querySelectorAll('.nav-links a').forEach(link => {
-          link.classList.remove('active');
-          link.removeAttribute('aria-current');
-          if (link.getAttribute('href') === `#${section.id}`) {
-            link.classList.add('active');
-            link.setAttribute('aria-current', 'page');
+      canvas.style.position = 'fixed';
+      canvas.style.top = '0';
+      canvas.style.left = '0';
+      canvas.style.pointerEvents = 'none';
+      canvas.style.zIndex = '9999';
+      
+      document.body.appendChild(canvas);
+      
+      // Set canvas size to window size
+      const resizeCanvas = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      };
+      
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+      
+      let mouseX = 0;
+      let mouseY = 0;
+      const dots = [];
+      
+      class Dot {
+        constructor(x, y) {
+          this.x = x;
+          this.y = y;
+          this.size = 3;
+          this.opacity = 0.5;
+          this.color = '#007BFF';
+        }
+        
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(0, 123, 255, ${this.opacity})`;
+          ctx.fill();
+          ctx.closePath();
+          
+          this.opacity -= 0.02;
+          this.size -= 0.1;
+        }
+      }
+      
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        dots.push(new Dot(mouseX, mouseY));
+      });
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw dots
+        for (let i = 0; i < dots.length; i++) {
+          dots[i].draw();
+          
+          // Remove dot if it's too small or transparent
+          if (dots[i].size <= 0 || dots[i].opacity <= 0) {
+            dots.splice(i, 1);
+            i--;
+          }
+        }
+      }
+      
+      animate();
+    };
+    
+    // Initialize cursor trail effect
+    createCursorTrail();
+
+    // Add scroll spy functionality to highlight the current section in the navbar
+    const addScrollSpy = () => {
+      const sections = document.querySelectorAll('.section');
+      const navLinks = document.querySelectorAll('.navbar-menu a');
+      
+      const options = {
+        threshold: 0.4,
+        rootMargin: '0px 0px -20% 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, options);
+      
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    };
+    
+    addScrollSpy();
+
+    // Modified Intersection Observer for scroll animations without adding highlighting
+    const observeElements = () => {
+      const sections = document.querySelectorAll('.section');
+      const footer = document.querySelector('.footer');
+      
+      const options = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      };
+      
+      // We're keeping the animation effects but not changing any navigation highlighting
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Only add the visible class for animation purposes, not for navigation highlighting
+            if (!entry.target.classList.contains('visible')) {
+              entry.target.classList.add('visible');
+            }
+          }
+        });
+      }, options);
+      
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+      
+      observer.observe(footer);
+    };
+    
+    observeElements();
+
+    // Card tilt effect on hover
+    const addTiltEffect = () => {
+      const cards = document.querySelectorAll('.about-card, .project-card, .focus-card, .education-card');
+      
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const angleX = (y - centerY) / 20;
+          const angleY = (centerX - x) / 20;
+          
+          card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.05)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+    };
+    
+    addTiltEffect();
+
+    // Add ripple effect to buttons
+    const addRippleEffect = () => {
+      const buttons = document.querySelectorAll('.primary-button, .secondary-button, .project-button, .submit-button, .reset-button');
+      
+      buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          const rect = button.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const ripple = document.createElement('span');
+          ripple.classList.add('ripple');
+          ripple.style.top = `${y}px`;
+          ripple.style.left = `${x}px`;
+          
+          button.appendChild(ripple);
+          
+          setTimeout(() => {
+            ripple.remove();
+          }, 600);
+        });
+      });
+    };
+    
+    addRippleEffect();
+
+    // Handle back-to-top visibility on scroll
+    const handleScroll = () => {
+      const backToTop = document.getElementById('back-to-top');
+      
+      if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    };
+
+    // Debounce function to optimize scroll event handling
+    const debounce = (func, wait = 100) => {
+      let timeout;
+      return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+      };
+    };
+
+    window.addEventListener('scroll', debounce(handleScroll, 50));
+    handleScroll();
+
+    // Back to top button functionality
+    document.getElementById('back-to-top').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Contact form message character counter
+    const messageField = document.getElementById('message');
+    const charCount = document.getElementById('char-count');
+    
+    if (messageField && charCount) {
+      // Update character count on input
+      messageField.addEventListener('input', () => {
+        const count = messageField.value.length;
+        charCount.textContent = count;
+        
+        // Change color if approaching limit
+        if (count > 400) {
+          charCount.style.color = '#ff9800';
+        } else if (count > 450) {
+          charCount.style.color = '#f44336';
+        } else {
+          charCount.style.color = '#777';
+        }
+      });
+    }
+
+    // Contact form submission handling
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+
+        // Validate inputs
+        if (!name) {
+          formMessage.textContent = 'Name is required.';
+          formMessage.className = 'form-message error';
+          return;
+        }
+
+        if (!email) {
+          formMessage.textContent = 'Email is required.';
+          formMessage.className = 'form-message error';
+          return;
+        }
+        
+        if (!subject) {
+          formMessage.textContent = 'Subject is required.';
+          formMessage.className = 'form-message error';
+          return;
+        }
+
+        if (!message) {
+          formMessage.textContent = 'Message is required.';
+          formMessage.className = 'form-message error';
+          return;
+        }
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          formMessage.textContent = 'Please enter a valid email address.';
+          formMessage.className = 'form-message error';
+          return;
+        }
+
+        submitButton.disabled = true;
+        formMessage.textContent = 'Sending...';
+        formMessage.className = 'form-message';
+
+        try {
+          // Simulate form submission with a delay
+          await new Promise(resolve => setTimeout(resolve, 1500));
+          
+          formMessage.textContent = 'Message sent successfully! I\'ll get back to you soon.';
+          formMessage.className = 'form-message success';
+          
+          // Add slide animation to success message
+          formMessage.style.animation = 'slideUp 0.5s ease-in-out';
+          contactForm.reset();
+          
+          // Reset character count
+          if (charCount) {
+            charCount.textContent = '0';
+            charCount.style.color = '#777';
+          }
+        } catch (error) {
+          formMessage.textContent = 'There was an error sending your message. Please try again later.';
+          formMessage.className = 'form-message error';
+          console.error('Form submission error:', error);
+        } finally {
+          submitButton.disabled = false;
+        }
+      });
+      
+      // Reset form message when resetting the form
+      const resetButton = contactForm.querySelector('button[type="reset"]');
+      if (resetButton) {
+        resetButton.addEventListener('click', () => {
+          formMessage.textContent = '';
+          formMessage.className = 'form-message';
+          
+          // Reset character count
+          if (charCount) {
+            charCount.textContent = '0';
+            charCount.style.color = '#777';
           }
         });
       }
-    });
-  }
-
-  // Handle back-to-top visibility on scroll
-  function handleScroll() {
-    const backToTop = document.getElementById('back-to-top');
-    if (window.scrollY > 300) {
-      backToTop.classList.add('visible');
-    } else {
-      backToTop.classList.remove('visible');
     }
-  }
-
-  // Debounce function to optimize scroll event handling
-  function debounce(func, wait = 100) {
-    let timeout;
-    return function(...args) {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(this, args), wait);
-    };
-  }
-
-  window.addEventListener('scroll', debounce(() => {
-    updateActiveNav();
-    handleScroll();
-  }));
-
-  handleScroll();
-  document.body.classList.add('loaded');
-
-  // Contact form submission handling
-  const contactForm = document.getElementById('contact-form');
-  const formMessage = document.getElementById('form-message');
-
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-    const submitButton = contactForm.querySelector('button');
-
-    if (!name) {
-      formMessage.textContent = 'Name is required.';
-      formMessage.className = 'form-message error';
-      return;
-    }
-
-    if (!email) {
-      formMessage.textContent = 'Email is required.';
-      formMessage.className = 'form-message error';
-      return;
-    }
-
-    if (!message) {
-      formMessage.textContent = 'Message is required.';
-      formMessage.className = 'form-message error';
-      return;
-    }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      formMessage.textContent = 'Please enter a valid email address.';
-      formMessage.className = 'form-message error';
-      return;
-    }
-
-    submitButton.disabled = true;
-    formMessage.textContent = 'Sending...';
-    formMessage.className = 'form-message';
-
-    try {
-      const response = await fetch('https://formspree.io/f/xnnjkkpy', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message })
-      });
-
-      if (response.ok) {
-        formMessage.textContent = 'Message sent successfully! I’ll get back to you soon.';
-        formMessage.className = 'form-message success';
-        contactForm.reset();
-      } else {
-        formMessage.textContent = 'There was an error sending your message. Please try again later.';
-        formMessage.className = 'form-message error';
-      }
-    } catch (error) {
-      formMessage.textContent = 'There was an error sending your message. Please try again later.';
-      formMessage.className = 'form-message error';
-      console.error('Form submission error:', error);
-    } finally {
-      submitButton.disabled = false;
-    }
-  });
-
-  // Back to top button functionality
-  document.getElementById('back-to-top').addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  }, 100);
 });

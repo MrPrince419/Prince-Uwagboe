@@ -47,303 +47,377 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-  <div id="loading-spinner" class="spinner"></div>
-  <header class="header">
-    <label for="mobile-menu" class="menu-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></label>
-    <input type="checkbox" id="mobile-menu" class="mobile-menu">
-    <nav class="nav" aria-label="Main navigation">
-      <ul class="nav-links">
-        <li><a href="#home" tabindex="0">Home</a></li>
-        <li><a href="#about" tabindex="0">About</a></li>
-        <li><a href="#experience" tabindex="0">Experience</a></li>
-        <li><a href="#projects" tabindex="0">Projects</a></li>
-        <li><a href="#education" tabindex="0">Education</a></li>
-        <li><a href="#tech-stack" tabindex="0">Tech Stack</a></li>
-        <li><a href="#testimonials" tabindex="0">Testimonials</a></li>
-        <li><a href="#blog" tabindex="0">Blog</a></li>
-        <li><a href="#contact" tabindex="0">Contact</a></li>
-      </ul>
-    </nav>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="#home" class="navbar-logo">Prince Uwagboe</a>
+      <div class="navbar-menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="navbar-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <header id="home" class="header">
+    <div class="header-content">
+      <img src="prince-uwagboe-profile.jpg" alt="Profile picture of Prince Uwagboe" class="profile-pic" loading="lazy" onerror="this.alt='Profile picture unavailable'">
+      <h1 class="main-heading">
+        <span id="typewriter-text"></span>
+        <span class="cursor"></span>
+      </h1>
+      <p class="sub-heading">Front-End Developer Crafting Innovative Web Solutions</p>
+      <div class="header-buttons">
+        <a href="#projects" class="primary-button" aria-label="View Prince Uwagboe's projects">View My Work</a>
+        <a href="#contact" class="secondary-button" aria-label="Contact Prince Uwagboe">Contact Me</a>
+      </div>
+    </div>
   </header>
+
   <main class="content">
-    <section id="home" class="hero-section">
-      <div class="hero-content">
-        <img src="prince-uwagboe-profile.jpg" alt="Profile picture of Prince Uwagboe, a Front-End Developer" class="hero-pic" loading="lazy" onerror="this.alt='Profile picture unavailable'">
-        <h1 class="hero-title">HI, I'M PRINCE UWAGBOE</h1>
-        <p class="hero-tagline">Front-End Developer Crafting Innovative Web Solutions</p>
-        <div class="hero-cta">
-          <a href="#projects" class="cta-btn" aria-label="View Prince Uwagboe's projects">View My Work</a>
+    <section id="about" class="section">
+      <h2 class="section-title">About Me</h2>
+      <div class="section-separator"></div>
+      <p class="section-paragraph">I'm Prince Uwagboe, a Front-End Developer passionate about building responsive, user-focused web applications that solve real-world problems. With expertise in React.js, TypeScript, and modern JavaScript frameworks, I enjoy creating intuitive interfaces that enhance user experiences.</p>
+      <div class="cards-grid">
+        <div class="card about-card">
+          <i class="fas fa-laptop-code card-icon"></i>
+          <h3 class="card-title">Development</h3>
+          <p class="card-description">Building responsive, user-friendly web applications with modern frameworks and best practices.</p>
+        </div>
+        <div class="card about-card">
+          <i class="fas fa-mobile-alt card-icon"></i>
+          <h3 class="card-title">Responsive Design</h3>
+          <p class="card-description">Creating interfaces that work seamlessly across all devices and screen sizes.</p>
+        </div>
+        <div class="card about-card">
+          <i class="fas fa-tools card-icon"></i>
+          <h3 class="card-title">Problem Solving</h3>
+          <p class="card-description">Approaching challenges with analytical thinking and creative solutions.</p>
         </div>
       </div>
     </section>
 
-    <section id="about" class="section">
-      <h2>About Me</h2>
+    <section id="skills" class="section">
+      <h2 class="section-title">Technical Skills</h2>
       <div class="section-separator"></div>
-      <p>I’m Prince Uwagboe, a Front-End Developer passionate about building responsive, user-focused web applications that solve real-world problems. With expertise in React.js, TypeScript, and modern JavaScript frameworks, I enjoy creating intuitive interfaces that enhance user experiences. My background also includes full-stack capabilities, leveraging tools like AWS, Node.js, and Git to deliver scalable solutions. I’ve optimized workflows at Cita Marketplace as an IT Support Intern, reducing downtime by 30%, and increased customer satisfaction by 20% at Mary's Place through creative problem-solving. Currently pursuing a Bachelor’s in Computer Science at Algoma University, I’m eager to join a dynamic team where I can contribute my skills and grow as a developer. I’d love to explore opportunities that align with my career aspirations.</p>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3 class="category-title">Frontend</h3>
+          <div class="skills-items">
+            <div class="skill-item"><i class="fas fa-code"></i>React.js</div>
+            <div class="skill-item"><i class="fab fa-js"></i>TypeScript</div>
+            <div class="skill-item"><i class="fab fa-html5"></i>HTML/CSS</div>
+            <div class="skill-item"><i class="fab fa-sass"></i>SASS</div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 class="category-title">Backend</h3>
+          <div class="skills-items">
+            <div class="skill-item"><i class="fab fa-node-js"></i>Node.js</div>
+            <div class="skill-item"><i class="fab fa-python"></i>Django</div>
+            <div class="skill-item"><i class="fas fa-database"></i>SQL/NoSQL</div>
+            <div class="skill-item"><i class="fas fa-server"></i>API Design</div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 class="category-title">Cloud</h3>
+          <div class="skills-items">
+            <div class="skill-item"><i class="fab fa-aws"></i>AWS</div>
+            <div class="skill-item"><i class="fab fa-docker"></i>Docker</div>
+            <div class="skill-item"><i class="fas fa-network-wired"></i>Netlify</div>
+            <div class="skill-item"><i class="fas fa-cloud"></i>Heroku</div>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3 class="category-title">Design</h3>
+          <div class="skills-items">
+            <div class="skill-item"><i class="fas fa-paint-brush"></i>Canva</div>
+            <div class="skill-item"><i class="fab fa-figma"></i>Figma</div>
+            <div class="skill-item"><i class="fas fa-pen-nib"></i>Adobe CS</div>
+            <div class="skill-item"><i class="fas fa-palette"></i>UX/UI</div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="experience" class="section">
-      <h2>Experience</h2>
+      <h2 class="section-title">Experience</h2>
       <div class="section-separator"></div>
-      <div class="experience-grid">
-        <div class="card" tabindex="0" aria-label="Freelance Front-End Developer Experience">
-          <h3>Freelance Front-End Developer</h3>
-          <p>Self-Employed | Jan 2023 - Present</p>
-          <ul>
-            <li>Developed responsive web applications for clients, including a real estate platform that increased user engagement by 25% through intuitive design.</li>
-            <li>Built and maintained a personal portfolio site, attracting 10+ freelance opportunities by showcasing front-end skills with HTML, CSS, and JavaScript.</li>
-            <li>Collaborated with clients to deliver custom solutions, ensuring accessibility and cross-browser compatibility.</li>
-          </ul>
+      <div class="timeline">
+        <div class="timeline-entry">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Freelance Front-End Developer</h3>
+            <p class="timeline-date">Self-Employed | Jan 2023 - Present</p>
+            <ul>
+              <li>Developed responsive web applications for clients, including a real estate platform that increased user engagement by 25% through intuitive design.</li>
+              <li>Built and maintained a personal portfolio site, attracting 10+ freelance opportunities by showcasing front-end skills with HTML, CSS, and JavaScript.</li>
+              <li>Collaborated with clients to deliver custom solutions, ensuring accessibility and cross-browser compatibility.</li>
+            </ul>
+          </div>
         </div>
-        <div class="card" tabindex="0" aria-label="IT Support Intern Experience">
-          <h3>IT Support Intern</h3>
-          <p>Cita Marketplace | Feb 2024 - Jan 2025</p>
-          <ul>
-            <li>Spearheaded deployment and optimization of 100+ computer systems and networks, reducing downtime by 30% through proactive monitoring and swift resolution strategies.</li>
-            <li>Improved troubleshooting efficiency by 30% by revamping the IT knowledge base with user-focused insights, enhancing team synergy.</li>
-            <li>Optimized technical support workflows, cutting average ticket resolution time to under 30 minutes, improving service quality.</li>
-          </ul>
+        <div class="timeline-entry">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>IT Support Intern</h3>
+            <p class="timeline-date">Cita Marketplace | Feb 2024 - Jan 2025</p>
+            <ul>
+              <li>Spearheaded deployment and optimization of 100+ computer systems and networks, reducing downtime by 30% through proactive monitoring and swift resolution strategies.</li>
+              <li>Improved troubleshooting efficiency by 30% by revamping the IT knowledge base with user-focused insights, enhancing team synergy.</li>
+              <li>Optimized technical support workflows, cutting average ticket resolution time to under 30 minutes, improving service quality.</li>
+            </ul>
+          </div>
         </div>
-        <div class="card" tabindex="0" aria-label="Volunteer Experience at The Salvation Army">
-          <h3>Volunteer</h3>
-          <p>The Salvation Army | Jan 2023 - May 2023</p>
-          <ul>
-            <li>Assisted in coordinating food donation drives, ensuring timely distribution to over 150 families, enhancing community support.</li>
-            <li>Organized inventory for food donations, improving efficiency by 10% through systematic tracking and collaboration with a team of volunteers.</li>
-            <li>Supported event logistics for community outreach programs, demonstrating strong organizational and teamwork skills under tight deadlines.</li>
-          </ul>
-        </div>
-        <div class="card" tabindex="0" aria-label="Customer Service Representative Experience">
-          <h3>Customer Service Representative</h3>
-          <p>Mary's Place | Mar 2022 - Dec 2022</p>
-          <ul>
-            <li>Collaborated with inventory specialists to streamline stock levels, achieving a 20% reduction in out-of-stock incidents through meticulous coordination.</li>
-            <li>Designed an enhanced follow-up system, reducing customer complaints by 30% and boosting satisfaction metrics.</li>
-            <li>Achieved a 95% first-contact resolution rate for inquiries, surpassing targets and increasing positive feedback by 20% through empathetic communication.</li>
-          </ul>
+        <div class="timeline-entry">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Volunteer</h3>
+            <p class="timeline-date">The Salvation Army | Jan 2023 - May 2023</p>
+            <ul>
+              <li>Assisted in coordinating food donation drives, ensuring timely distribution to over 150 families, enhancing community support.</li>
+              <li>Organized inventory for food donations, improving efficiency by 10% through systematic tracking and collaboration with a team of volunteers.</li>
+              <li>Supported event logistics for community outreach programs, demonstrating strong organizational and teamwork skills under tight deadlines.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="projects" class="section">
-      <h2>Featured Projects</h2>
+      <h2 class="section-title">Featured Projects</h2>
       <div class="section-separator"></div>
-      <div class="project-grid">
-        <div class="project-item">
-          <div class="project-content">
-            <h3>Mood Based Music Player</h3>
-            <p><strong>About:</strong> Built a responsive web application that curates playlists based on user mood, utilizing machine learning for facial recognition with React.js and TypeScript.</p>
-            <p><strong>Features:</strong></p>
-            <ul>
-              <li>Real-time emotion analysis using an integrated ML model for facial recognition.</li>
-              <li>Dynamic playlist curation based on detected mood for a personalized experience.</li>
-              <li>Responsive design ensuring accessibility across devices.</li>
-              <li>Optimized API calls for accurate and efficient mood detection.</li>
-            </ul>
-            <p class="project-tech"><strong>Tech:</strong> <span>React.js</span> <span>TypeScript</span> <span>Machine Learning</span></p>
-            <p class="project-results"><strong>Results:</strong> Enhanced user engagement by 40% through seamless mood consistency.</p>
-            <div class="project-links">
-              <a href="https://github.com/MrPrince419/Mood-Based-Music-Player" target="_blank" class="source-btn" aria-label="View source code of Mood Based Music Player">View Source</a>
-            </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3 class="project-title">Mood Based Music Player</h3>
+          <p class="project-description">Built a responsive web application that curates playlists based on user mood, utilizing machine learning for facial recognition with React.js and TypeScript.</p>
+          <p class="project-features-title">Features:</p>
+          <ul class="project-features">
+            <li>Real-time emotion analysis using an integrated ML model for facial recognition.</li>
+            <li>Dynamic playlist curation based on detected mood for a personalized experience.</li>
+            <li>Responsive design ensuring accessibility across devices.</li>
+            <li>Optimized API calls for accurate and efficient mood detection.</li>
+          </ul>
+          <div class="project-tech-tags">
+            <span>React.js</span>
+            <span>TypeScript</span>
+            <span>Machine Learning</span>
           </div>
+          <p class="project-results">Enhanced user engagement by 40% through seamless mood consistency.</p>
+          <a href="https://github.com/MrPrince419/Mood-Based-Music-Player" target="_blank" class="project-button" aria-label="View source code of Mood Based Music Player">View Source</a>
         </div>
-        <div class="project-item">
-          <div class="project-content">
-            <h3>Expense Tracker Dashboard</h3>
-            <p><strong>About:</strong> Designed a responsive web app to help users monitor income and expenses, developed using HTML, CSS, and JavaScript.</p>
-            <p><strong>Features:</strong></p>
-            <ul>
-              <li>Adaptive layout for seamless use across all devices.</li>
-              <li>Customizable financial reports to provide actionable user insights.</li>
-              <li>Local storage integration to securely save user data.</li>
-              <li>User-friendly interface for efficient financial tracking.</li>
-            </ul>
-            <p class="project-tech"><strong>Tech:</strong> <span>HTML</span> <span>CSS</span> <span>JavaScript</span></p>
-            <p class="project-results"><strong>Results:</strong> Empowered users to manage finances effectively with an intuitive dashboard.</p>
-            <div class="project-links">
-              <a href="https://github.com/MrPrince419/Expense-Tracker-Dashboard" target="_blank" class="source-btn" aria-label="View source code of Expense Tracker Dashboard">View Source</a>
-            </div>
+        <div class="project-card">
+          <h3 class="project-title">Expense Tracker Dashboard</h3>
+          <p class="project-description">Designed a responsive web app to help users monitor income and expenses, developed using HTML, CSS, and JavaScript.</p>
+          <p class="project-features-title">Features:</p>
+          <ul class="project-features">
+            <li>Adaptive layout for seamless use across all devices.</li>
+            <li>Customizable financial reports to provide actionable user insights.</li>
+            <li>Local storage integration to securely save user data.</li>
+            <li>User-friendly interface for efficient financial tracking.</li>
+          </ul>
+          <div class="project-tech-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
           </div>
+          <p class="project-results">Empowered users to manage finances effectively with an intuitive dashboard.</p>
+          <a href="https://github.com/MrPrince419/Expense-Tracker-Dashboard" target="_blank" class="project-button" aria-label="View source code of Expense Tracker Dashboard">View Source</a>
         </div>
-        <div class="project-item">
-          <div class="project-content">
-            <h3>Personal Portfolio Site</h3>
-            <p><strong>About:</strong> Developed a modern, responsive portfolio to showcase my front-end development skills, experiences, and projects, built using HTML, CSS, and JavaScript.</p>
-            <p><strong>Features:</strong></p>
-            <ul>
-              <li>Smooth scrolling and interactive elements for an enhanced user experience.</li>
-              <li>Fully responsive design optimized for all devices, including small screens like the iPhone SE.</li>
-              <li>Accessible navigation with clear sections for experience, projects, and skills.</li>
-              <li>Integrated contact form for seamless communication with recruiters and clients.</li>
-            </ul>
-            <p class="project-tech"><strong>Tech:</strong> <span>HTML</span> <span>CSS</span> <span>JavaScript</span></p>
-            <p class="project-results"><strong>Results:</strong> Created a professional platform to effectively present my skills and projects to potential employers and clients.</p>
-            <div class="project-links">
-              <a href="https://github.com/MrPrince419/Prince-Uwagboe" target="_blank" class="source-btn" aria-label="View source code of Personal Portfolio Site">View Source</a>
-            </div>
+        <div class="project-card">
+          <h3 class="project-title">Personal Portfolio Site</h3>
+          <p class="project-description">Developed a modern, responsive portfolio to showcase my front-end development skills, experiences, and projects, built using HTML, CSS, and JavaScript.</p>
+          <p class="project-features-title">Features:</p>
+          <ul class="project-features">
+            <li>Smooth scrolling and interactive elements for an enhanced user experience.</li>
+            <li>Fully responsive design optimized for all devices, including small screens like the iPhone SE.</li>
+            <li>Accessible navigation with clear sections for experience, projects, and skills.</li>
+            <li>Integrated contact form for seamless communication with recruiters and clients.</li>
+          </ul>
+          <div class="project-tech-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
           </div>
+          <p class="project-results">Created a professional platform to effectively present my skills and projects to potential employers and clients.</p>
+          <a href="https://github.com/MrPrince419/Prince-Uwagboe" target="_blank" class="project-button" aria-label="View source code of Personal Portfolio Site">View Source</a>
         </div>
       </div>
     </section>
 
     <section id="education" class="section">
-      <h2>Education</h2>
+      <h2 class="section-title">Education</h2>
       <div class="section-separator"></div>
       <div class="education-grid">
-        <div class="card" tabindex="0" aria-label="Bachelor of Science in Computer Science">
+        <div class="education-card">
           <h3>Bachelor of Science in Computer Science</h3>
-          <p>Algoma University | 2023 - Present</p>
-          <p>Currently pursuing a degree with a focus on data analysis, cloud technologies, and scalable systems. Developed a data-driven project to visualize student performance trends, earning recognition from peers and professors.</p>
+          <p class="education-date">Algoma University | 2023 - Present</p>
+          <p class="education-description">Currently pursuing a degree with a focus on data analysis, cloud technologies, and scalable systems. Developed a data-driven project to visualize student performance trends, earning recognition from peers and professors.</p>
         </div>
-        <div class="card" tabindex="0" aria-label="Secondary School Diploma">
+        <div class="education-card">
           <h3>Secondary School Diploma</h3>
-          <p>Igbinedion Education Centre | 2019 - 2021</p>
-          <p>Graduated as an Honor Roll scholar, demonstrating academic excellence. Led the Mathematics Club, fostering leadership and collaboration skills, and sparked a passion for programming through AP Computer Science.</p>
+          <p class="education-date">Igbinedion Education Centre | 2019 - 2021</p>
+          <p class="education-description">Graduated as an Honor Roll scholar, demonstrating academic excellence. Led the Mathematics Club, fostering leadership and collaboration skills, and sparked a passion for programming through AP Computer Science.</p>
         </div>
       </div>
     </section>
 
-    <section id="tech-stack" class="section">
-      <h2>Technical Skills</h2>
+    <section id="focus" class="section">
+      <h2 class="section-title">Current Focus & Goals</h2>
       <div class="section-separator"></div>
-      <div class="tech-grid">
-        <div class="tech-card" tabindex="0" aria-label="Frontend Technologies">
-          <h3>Frontend</h3>
-          <ul>
-            <li><i class="fas fa-code"></i> React.js</li>
-            <li><i class="fas fa-code"></i> TypeScript</li>
-            <li><i class="fas fa-code"></i> HTML/CSS</li>
-          </ul>
+      <div class="focus-grid">
+        <div class="focus-card">
+          <h3>Full-Stack Development</h3>
+          <p>Expanding backend skills with Node.js and cloud technologies to complement frontend expertise.</p>
         </div>
-        <div class="tech-card" tabindex="0" aria-label="Backend Technologies">
-          <h3>Backend</h3>
-          <ul>
-            <li><i class="fas fa-server"></i> Node.js</li>
-            <li><i class="fas fa-server"></i> Django</li>
-            <li><i class="fas fa-server"></i> SQL/NoSQL</li>
-          </ul>
+        <div class="focus-card">
+          <h3>UI/UX Design Principles</h3>
+          <p>Studying advanced design concepts to create more intuitive and engaging user experiences.</p>
         </div>
-        <div class="tech-card" tabindex="0" aria-label="Cloud Technologies">
-          <h3>Cloud</h3>
-          <ul>
-            <li><i class="fas fa-cloud"></i> AWS</li>
-            <li><i class="fas fa-cloud"></i> Docker</li>
-            <li><i class="fas fa-cloud"></i> Netlify</li>
-          </ul>
+        <div class="focus-card">
+          <h3>Performance Optimization</h3>
+          <p>Exploring techniques to enhance web application speed and efficiency.</p>
         </div>
-        <div class="tech-card" tabindex="0" aria-label="Design Tools">
-          <h3>Design</h3>
-          <ul>
-            <li><i class="fas fa-paint-brush"></i> Canva</li>
-            <li><i class="fas fa-paint-brush"></i> Figma</li>
-            <li><i class="fas fa-paint-brush"></i> Adobe CS</li>
-          </ul>
+        <div class="focus-card">
+          <h3>Open Source Contributions</h3>
+          <p>Participating in the developer community through contributions to open source projects.</p>
         </div>
       </div>
-    </section>
-
-    <section id="testimonials" class="section">
-      <h2>Testimonials</h2>
-      <div class="section-separator"></div>
-      <div class="testimonial-grid">
-        <div class="testimonial-card" tabindex="0" aria-label="Testimonial from Tech Lead">
-          <p>Delivered standout technical contributions as an IT Support Intern, showcasing exceptional promise in the IT field through a proactive mindset.</p>
-          <cite>- Tech Lead at Cita Marketplace</cite>
+      <h3 class="subsection-title">Future Goals</h3>
+      <div class="goals-grid">
+        <div class="focus-card">
+          <h3>Machine Learning Integration</h3>
+          <p>Incorporating AI capabilities into web applications for personalized user experiences.</p>
         </div>
-        <div class="testimonial-card" tabindex="0" aria-label="Testimonial from Freelance Client 1">
-          <p>Transformed my real estate website into a stunning success with creative ingenuity and top-tier design expertise—highly recommended!</p>
-          <cite>- Freelance Client</cite>
+        <div class="focus-card">
+          <h3>Mobile App Development</h3>
+          <p>Expanding skills to include React Native for cross-platform mobile applications.</p>
         </div>
-        <div class="testimonial-card" tabindex="0" aria-label="Testimonial from Freelance Client for Graphic Design">
-          <p>Created eye-catching posters and flyers for our community event, increasing attendance by 20%—Prince’s design skills and attention to detail were exceptional!</p>
-          <cite>- Freelance Client</cite>
+        <div class="focus-card">
+          <h3>Technical Leadership</h3>
+          <p>Growing into leadership roles to guide teams in creating innovative solutions.</p>
         </div>
-        <div class="testimonial-card" tabindex="0" aria-label="Testimonial from Manager">
-          <p>Elevated team performance with stellar customer service skills and infectious positivity, making him ideal for client-facing roles.</p>
-          <cite>- Manager at Mary's Place</cite>
-        </div>
-      </div>
-    </section>
-
-    <section id="blog" class="section">
-      <h2>Blog</h2>
-      <div class="section-separator"></div>
-      <div class="blog-grid">
-        <div class="card blog-card" tabindex="0" aria-label="Blog Post: Overcoming Challenges in the Mood Based Music Player">
-          <h3>Overcoming Challenges in the Mood Based Music Player: A Deep Dive into React and Machine Learning</h3>
-          <p>Developed a responsive web application that curates playlists based on user mood, integrating machine learning for facial recognition using React.js and TypeScript. Faced challenges in optimizing API calls for real-time emotion detection, which I overcame by implementing efficient caching strategies, reducing latency by 25%. This project not only improved user engagement by 40% but also deepened my understanding of integrating complex technologies to solve real-world problems.</p>
-        </div>
-        <div class="card blog-card" tabindex="0" aria-label="Blog Post: My Journey to Front-End Development">
-          <h3>My Journey to Front-End Development: Turning Challenges into Opportunities</h3>
-          <p>Transitioned from a Customer Service role at Mary's Place, where I honed problem-solving skills by reducing complaints by 30%, to an IT Support Intern at Cita Marketplace, improving efficiency by 30%. Through self-learning and academic pursuits at Algoma University, I mastered React, TypeScript, and responsive design, building projects like the Mood Based Music Player. This journey taught me resilience, adaptability, and the value of continuous learning in tech.</p>
+        <div class="focus-card">
+          <h3>Continuous Learning</h3>
+          <p>Staying current with emerging technologies and industry best practices.</p>
         </div>
       </div>
     </section>
 
     <section id="contact" class="section">
-      <h2>Contact Me</h2>
+      <h2 class="section-title">Contact Me</h2>
       <div class="section-separator"></div>
-      <form id="contact-form" class="contact-form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required aria-required="true">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required aria-required="true">
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required aria-required="true"></textarea>
-        <button type="submit" aria-label="Send message">Send Message</button>
-        <div id="form-message" class="form-message"></div>
-      </form>
+      <p class="section-paragraph">I'm always interested in hearing about new projects and opportunities. Feel free to reach out using the form below or connect with me directly through my social profiles.</p>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3 class="connect-title">Let's Connect</h3>
+          <div class="contact-item">
+            <i class="fas fa-envelope contact-icon"></i>
+            <a href="mailto:uwagboe.o.p@gmail.com" class="contact-link">uwagboe.o.p@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt contact-icon"></i>
+            <span>Sault Ste. Marie, ON</span>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-github contact-icon"></i>
+            <a href="https://github.com/MrPrince419" target="_blank" class="contact-link">github.com/MrPrince419</a>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-linkedin contact-icon"></i>
+            <a href="https://www.linkedin.com/in/prince05/" target="_blank" class="contact-link">linkedin.com/in/prince05</a>
+          </div>
+          <div class="contact-availability">
+            <h4>Availability</h4>
+            <p><i class="fas fa-clock"></i> Currently available for new projects and opportunities</p>
+          </div>
+          <div class="response-time">
+            <h4>Response Time</h4>
+            <p><i class="fas fa-hourglass-half"></i> Usually within 24-48 hours</p>
+          </div>
+        </div>
+        <div class="contact-form-container">
+          <form id="contact-form" class="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <div class="input-with-icon">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="name" name="name" placeholder="Your name" required aria-required="true">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <div class="input-with-icon">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="email" name="email" placeholder="Your email address" required aria-required="true">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <div class="input-with-icon">
+                <i class="fas fa-briefcase input-icon"></i>
+                <input type="text" id="subject" name="subject" placeholder="What is this regarding?" required aria-required="true">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <div class="textarea-container">
+                <textarea id="message" name="message" placeholder="Tell me about your project or inquiry..." required aria-required="true" maxlength="500"></textarea>
+                <div class="character-counter"><span id="char-count">0</span>/500</div>
+              </div>
+            </div>
+            <div class="form-controls">
+              <button type="submit" class="submit-button" aria-label="Send message">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+              <button type="reset" class="reset-button" aria-label="Reset form">
+                <i class="fas fa-redo"></i> Reset
+              </button>
+            </div>
+            <div id="form-message" class="form-message"></div>
+          </form>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-social">
-        <a href="mailto:uwagboe.o.p@gmail.com" aria-label="Email Prince Uwagboe"><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/MrPrince419" target="_blank" aria-label="Visit Prince Uwagboe's GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/prince05/" target="_blank" aria-label="Visit Prince Uwagboe's LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3 class="footer-title">Prince Uwagboe</h3>
+        <p class="footer-tagline">Front-End Developer Crafting Innovative Web Solutions</p>
       </div>
-      <div class="footer-contact">
-        <p>© 2025 Prince Uwagboe. All rights reserved.</p>
+      <div class="footer-column">
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#skills">Skills</a></li>
+        </ul>
       </div>
+      <div class="footer-column">
+        <h3 class="footer-title">Connect</h3>
+        <div class="footer-social">
+          <a href="mailto:uwagboe.o.p@gmail.com" aria-label="Email Prince Uwagboe"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com/MrPrince419" target="_blank" aria-label="Visit Prince Uwagboe's GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/prince05/" target="_blank" aria-label="Visit Prince Uwagboe's LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Prince Uwagboe. All rights reserved.</p>
     </div>
   </footer>
 
   <button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <script src="script.js"></script>
-  <script>
-    (function(){
-      function c(){
-        var b = a.contentDocument || a.contentWindow.document;
-        if(b){
-          var d = b.createElement('script');
-          d.innerHTML = "window.__CF$cv$params={r:'91a5031abc218bb7',t:'MTc0MDk2MTY4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
-          b.getElementsByTagName('head')[0].appendChild(d);
-        }
-      }
-      if(document.body){
-        var a = document.createElement('iframe');
-        a.height = 1;
-        a.width = 1;
-        a.style.position = 'absolute';
-        a.style.top = 0;
-        a.style.left = 0;
-        a.style.border = 'none';
-        a.style.visibility = 'hidden';
-        document.body.appendChild(a);
-        if('loading' !== document.readyState) c();
-        else if(window.addEventListener) document.addEventListener('DOMContentLoaded', c);
-        else{
-          var e = document.onreadystatechange || function(){};
-          document.onreadystatechange = function(b){
-            e(b);
-            'loading' !== document.readyState && (document.onreadystatechange = e, c());
-          }
-        }
-      }
-    })();
-  </script>
 </body>
 </html>

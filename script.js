@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
     navbar.style.cssText = 'display: block !important; opacity: 1 !important; visibility: visible !important;';
   }
 
-  // Properly implement typewriter effect with cursor
+  // Improved typewriter effect with cursor that follows each letter
   const typewriterText = document.getElementById('typewriter-text');
   const cursor = document.querySelector('.cursor');
-  const fullText = "Hi, I'm Prince Uwagboe";
+  const fullText = "HI, I'M PRINCE UWAGBOE"; // Capitalized text
   let i = 0;
   
   // Ensure elements are visible immediately
@@ -27,20 +27,37 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   if (cursor) {
+    // Make sure cursor is visible and properly positioned
     cursor.style.cssText = 'display: inline-block !important; opacity: 1 !important; visibility: visible !important; animation: blink 0.7s infinite;';
   }
   
-  // Typewriter function that adds one letter at a time
+  // Typewriter function that adds one letter at a time with cursor following each letter
   function typeWriter() {
     if (i < fullText.length) {
+      // Add the next character to the text
       typewriterText.textContent += fullText.charAt(i);
       i++;
-      setTimeout(typeWriter, 100); // Typing speed (milliseconds)
+      
+      // Continue typing if not at the end
+      if (i < fullText.length) {
+        setTimeout(typeWriter, 100); // Typing speed (milliseconds)
+      } else {
+        // When typing is complete (after the last 'E'), hide the cursor
+        setTimeout(() => {
+          if (cursor) {
+            cursor.style.display = 'none';
+            cursor.style.animation = 'none';
+            cursor.style.opacity = '0';
+            cursor.style.visibility = 'hidden';
+            cursor.classList.add('hidden');
+          }
+        }, 500); // Wait 500ms after the last character before hiding cursor
+      }
     }
   }
   
-  // Start typewriter effect immediately
-  setTimeout(typeWriter, 500); // Small delay before starting
+  // Start typewriter effect with minimal delay
+  setTimeout(typeWriter, 300); // Reduced delay before starting
 
   // Navbar toggle functionality
   const navbarToggle = document.querySelector('.navbar-toggle');

@@ -79,25 +79,34 @@
   50% { opacity: 0; }
 }
 
-/* Make sure cursor is visible */
+/* Make sure cursor is visible and positioned properly */
 .cursor {
   display: inline-block !important;
-  width: 3px;
+  width: 2px;
   height: 1.2em;
-  background-color: var(--text-dark);
-  margin-left: 2px;
+  background-color: #333; /* Using a solid color to ensure visibility */
+  margin-left: -1px; /* Slightly overlap with text for a cleaner look */
   vertical-align: middle;
   animation: blink 0.7s infinite;
   position: relative;
-  top: -3px;
+  top: 1px; /* Fine-tuned vertical alignment */
   opacity: 1 !important;
   visibility: visible !important;
+}
+
+/* Add hidden class for cursor */
+.cursor.hidden {
+  opacity: 0 !important;
+  animation: none;
+  visibility: hidden !important;
 }
 
 #typewriter-text {
   display: inline-block;
   visibility: visible !important;
   opacity: 1 !important;
+  vertical-align: middle; /* Align with cursor */
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
 body {

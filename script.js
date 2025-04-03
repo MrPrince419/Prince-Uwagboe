@@ -351,13 +351,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const formMessage = document.getElementById('form-message');
 
     if (contactForm) {
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const inputs = contactForm.querySelectorAll('input[required], textarea[required]');
+      
+      // Function to check if all required fields are filled
+      const checkFormValidity = () => {
+        let isValid = true;
+        inputs.forEach(input => {
+          if (!input.value.trim()) {
+            isValid = false;
+          }
+          if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())) {
+            isValid = false;
+          }
+        });
+        return isValid;
+      };
+      
+      // Check form validity on input and toggle button state
+      inputs.forEach(input => {
+        input.addEventListener('input', () => {
+          if (checkFormValidity()) {
+            submitButton.classList.add('form-ready');
+          } else {
+            submitButton.classList.remove('form-ready');
+          }
+        });
+      });
+      
       contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        contactForm.classList.add('validation-attempted');
+        
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
         const subject = document.getElementById('subject').value.trim();
         const message = document.getElementById('message').value.trim();
-        const submitButton = contactForm.querySelector('button[type="submit"]');
 
         // Validate inputs
         if (!name) {
@@ -391,7 +420,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         submitButton.disabled = true;
-        formMessage.textContent = 'Sending...';
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        formMessage.textContent = '';
         formMessage.className = 'form-message';
 
         try {
@@ -404,6 +434,8 @@ document.addEventListener('DOMContentLoaded', () => {
           // Add slide animation to success message
           formMessage.style.animation = 'slideUp 0.5s ease-in-out';
           contactForm.reset();
+          contactForm.classList.remove('validation-attempted');
+          submitButton.classList.remove('form-ready');
           
           // Reset character count
           if (charCount) {
@@ -415,7 +447,9 @@ document.addEventListener('DOMContentLoaded', () => {
           formMessage.className = 'form-message error';
           console.error('Form submission error:', error);
         } finally {
+          // Restore button state
           submitButton.disabled = false;
+          submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
         }
       });
       
@@ -425,6 +459,8 @@ document.addEventListener('DOMContentLoaded', () => {
         resetButton.addEventListener('click', () => {
           formMessage.textContent = '';
           formMessage.className = 'form-message';
+          contactForm.classList.remove('validation-attempted');
+          submitButton.classList.remove('form-ready');
           
           // Reset character count
           if (charCount) {

@@ -6,11 +6,69 @@ document.addEventListener('DOMContentLoaded', () => {
   
   document.querySelector('.footer').classList.add('visible');
 
-  // Fixed Navbar visibility by directly modifying the element's CSS
+  // Enhanced Navbar functionality
   const navbar = document.querySelector('.navbar');
-  if (navbar) {
-    navbar.style.cssText = 'display: block !important; opacity: 1 !important; visibility: visible !important;';
+  const navbarMenu = document.querySelector('.navbar-menu');
+  const navbarToggle = document.querySelector('.navbar-toggle');
+  const navItems = document.querySelectorAll('.nav-item');
+  
+  // Add shadow to navbar on scroll
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+  
+  // Toggle menu when hamburger is clicked
+  if (navbarToggle && navbarMenu) {
+    navbarToggle.addEventListener('click', () => {
+      navbarMenu.classList.toggle('active');
+      navbarToggle.classList.toggle('active');
+      
+      // Change icon based on menu state
+      const icon = navbarToggle.querySelector('i');
+      if (navbarMenu.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navbarToggle.contains(e.target) && !navbarMenu.contains(e.target)) {
+        navbarMenu.classList.remove('active');
+        const icon = navbarToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
   }
+  
+  // Add active class to nav items based on scroll position
+  navItems.forEach(item => {
+    item.addEventListener('click', function() {
+      // Remove active class from all items
+      navItems.forEach(navItem => navItem.classList.remove('active'));
+      
+      // Add active class to clicked item
+      this.classList.add('active');
+      
+      // Close mobile menu after clicking
+      if (navbarMenu) {
+        navbarMenu.classList.remove('active');
+        if (navbarToggle) {
+          const icon = navbarToggle.querySelector('i');
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      }
+    });
+  });
 
   // Improved typewriter effect with cursor that follows each letter
   const typewriterText = document.getElementById('typewriter-text');
@@ -58,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // New typewriter effect for sub-heading
   const subHeadingText = document.querySelector('.sub-heading');
-  const subHeadingFullText = "I transform business data into actionable insights through analytics and automation.";
+  const subHeadingFullText = "Turning business data into smart decisions — with analytics, automation, and clean code.";
   let j = 0;
   let subHeadingTimeout;
 
@@ -73,17 +131,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // Start typewriter effect with minimal delay
   setTimeout(() => {
     typeWriter(); // Reduced delay before starting
+    
+    // Start sub-heading typewriter effect after main heading is complete
+    setTimeout(() => {
+      if (subHeadingText) {
+        // Ensure the sub-heading is cleared before starting
+        subHeadingText.textContent = '';
+        subHeadingTypeWriter();
+      }
+    }, fullText.length * 100 + 500); // Adjusted timing to start after main heading completes
   }, 300);
 
-  // Start sub-heading typewriter effect after main heading is complete
-  setTimeout(() => {
-    subHeadingTypeWriter();
-  }, 300 + (fullText.length * 100) + 500); // Delay after main heading completes
-
   // Navbar toggle functionality
-  const navbarToggle = document.querySelector('.navbar-toggle');
-  const navbarMenu = document.querySelector('.navbar-menu');
-  
   if (navbarToggle && navbarMenu) {
     navbarToggle.addEventListener('click', () => {
       navbarMenu.classList.toggle('active');
@@ -234,9 +293,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     addScrollSpy();
 
-    // Modified Intersection Observer for scroll animations without adding highlighting
+    // Modified Intersection Observer for scroll animations
     const observeElements = () => {
       const sections = document.querySelectorAll('.section');
+      const header = document.querySelector('.header'); // Add header to observed elements
       const footer = document.querySelector('.footer');
       
       const options = {
@@ -244,11 +304,9 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: '0px 0px -100px 0px'
       };
       
-      // We're keeping the animation effects but not changing any navigation highlighting
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // Only add the visible class for animation purposes, not for navigation highlighting
             if (!entry.target.classList.contains('visible')) {
               entry.target.classList.add('visible');
             }
@@ -256,14 +314,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }, options);
       
+      // Observe header specifically
+      if (header) observer.observe(header);
+      
       sections.forEach(section => {
         observer.observe(section);
       });
       
-      observer.observe(footer);
+      if (footer) observer.observe(footer);
     };
     
     observeElements();
+
+    // Add this code to update active nav items
+    const updateActiveNavItem = () => {
+      const scrollPosition = window.scrollY + 100; // Offset to account for navbar height
+      
+      document.querySelectorAll('.section, .header').forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          document.querySelectorAll('.nav-item').forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href') === `#${sectionId}`) {
+              item.classList.add('active');
+            }
+          });
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', updateActiveNavItem);
+    window.addEventListener('load', updateActiveNavItem);
 
     // Card tilt effect on hover
     const addTiltEffect = () => {
@@ -494,6 +578,106 @@ document.addEventListener('DOMContentLoaded', () => {
             charCount.style.color = '#777';
           }
         });
+      }
+    }
+  }, 100);
+
+  // Enhanced button hover effects
+  const enhanceButtonHoverEffects = () => {
+    const buttons = document.querySelectorAll('.primary-button, .secondary-button, .project-button');
+    
+    buttons.forEach(button => {
+      button.addEventListener('mouseenter', () => {
+        // Add animate.css classes for hover effect
+        button.classList.add('animate__animated', 'animate__pulse');
+      });
+      
+      button.addEventListener('mouseleave', () => {
+        // Remove animation classes when mouse leaves
+        setTimeout(() => {
+          button.classList.remove('animate__animated', 'animate__pulse');
+        }, 500);
+      });
+    });
+  };
+  
+  // Add skill icon animations
+  const animateSkillIcons = () => {
+    const skillItems = document.querySelectorAll('.skill-item i');
+    
+    skillItems.forEach(icon => {
+      icon.addEventListener('mouseenter', () => {
+        icon.classList.add('animate__animated', 'animate__rubberBand');
+      });
+      
+      icon.addEventListener('mouseleave', () => {
+        setTimeout(() => {
+          icon.classList.remove('animate__animated', 'animate__rubberBand');
+        }, 1000);
+      });
+    });
+  };
+  
+  // Add smooth page transitions
+  const addPageTransitions = () => {
+    const mainContent = document.querySelector('main') || document.body;
+    
+    // Add transition class to main content
+    mainContent.classList.add('page-transition');
+    
+    // Add transition effect when navigating between sections
+    document.querySelectorAll('a[href*="#"]').forEach(link => {
+      link.addEventListener('click', function() {
+        mainContent.classList.add('page-exit');
+        
+        setTimeout(() => {
+          mainContent.classList.remove('page-exit');
+          mainContent.classList.add('page-enter');
+          
+          setTimeout(() => {
+            mainContent.classList.remove('page-enter');
+          }, 500);
+        }, 300);
+      });
+    });
+  };
+  
+  // Update dark mode toggle with icon
+  const updateDarkModeToggle = () => {
+    const darkModeToggle = document.querySelector('.dark-mode-toggle');
+    
+    if (darkModeToggle) {
+      const currentTheme = document.body.getAttribute('data-theme') || 'light';
+      
+      // Set initial icon based on current theme
+      darkModeToggle.innerHTML = currentTheme === 'dark' 
+        ? '<i class="fas fa-sun"></i> Light Mode' 
+        : '<i class="fas fa-moon"></i> Dark Mode';
+        
+      // Add animation class
+      darkModeToggle.classList.add('animate__animated');
+    }
+  };
+  
+  // Initialize enhanced UI features
+  setTimeout(() => {
+    enhanceButtonHoverEffects();
+    animateSkillIcons();
+    addPageTransitions();
+    updateDarkModeToggle();
+    
+  }, 100);
+
+  // Fixed Navbar visibility issue - move this section from the top to ensure it runs after other code
+  setTimeout(() => {
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+      navbar.style.cssText = 'display: block !important; opacity: 1 !important; visibility: visible !important;';
+      
+      // Make sure menu items are also visible
+      const navbarMenu = document.querySelector('.navbar-menu');
+      if (navbarMenu) {
+        navbarMenu.style.cssText = 'visibility: visible !important; opacity: 1 !important;';
       }
     }
   }, 100);

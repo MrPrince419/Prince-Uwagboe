@@ -55,9 +55,30 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
+
+  // New typewriter effect for sub-heading
+  const subHeadingText = document.querySelector('.sub-heading');
+  const subHeadingFullText = "I transform business data into actionable insights through analytics and automation.";
+  let j = 0;
+  let subHeadingTimeout;
+
+  function subHeadingTypeWriter() {
+    if (j < subHeadingFullText.length) {
+      subHeadingText.textContent += subHeadingFullText.charAt(j);
+      j++;
+      subHeadingTimeout = setTimeout(subHeadingTypeWriter, 50); // Typing speed (milliseconds)
+    }
+  }
   
   // Start typewriter effect with minimal delay
-  setTimeout(typeWriter, 300); // Reduced delay before starting
+  setTimeout(() => {
+    typeWriter(); // Reduced delay before starting
+  }, 300);
+
+  // Start sub-heading typewriter effect after main heading is complete
+  setTimeout(() => {
+    subHeadingTypeWriter();
+  }, 300 + (fullText.length * 100) + 500); // Delay after main heading completes
 
   // Navbar toggle functionality
   const navbarToggle = document.querySelector('.navbar-toggle');

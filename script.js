@@ -375,6 +375,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const submitButton = contactForm.querySelector('button[type="submit"]');
       const inputs = contactForm.querySelectorAll('input[required], textarea[required]');
       
+      // Initially disable the submit button
+      submitButton.disabled = true;
+
       // Function to check if all required fields are filled
       const checkFormValidity = () => {
         let isValid = true;
@@ -393,8 +396,10 @@ document.addEventListener('DOMContentLoaded', () => {
       inputs.forEach(input => {
         input.addEventListener('input', () => {
           if (checkFormValidity()) {
+            submitButton.disabled = false; // Enable the button
             submitButton.classList.add('form-ready');
           } else {
+            submitButton.disabled = true; // Disable the button
             submitButton.classList.remove('form-ready');
           }
         });

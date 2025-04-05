@@ -5,10 +5,9 @@
   "main": "index.html",
   "scripts": {
     "start": "serve .",
-    "build": "node convert-images.js && node minify.js",
+    "build": "node minify.js",
     "minify-css": "cleancss -o styles.min.css styles.css",
-    "minify-js": "terser script.js -c -m -o script.min.js",
-    "optimize-images": "node convert-images.js"
+    "minify-js": "terser script.js -c -m -o script.min.js"
   },
   "keywords": [
     "portfolio",

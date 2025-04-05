@@ -1,22 +1,27 @@
-# Prince Uwagboe Portfolio
+# Prince Uwagboe – Data Analyst & Business Automation Portfolio
 
-Welcome to my personal portfolio! This project showcases my skills as a Front-End Developer, featuring my work experience, projects, technical skills, and insights through a blog section. Built with HTML, CSS, and JavaScript, this portfolio is designed to be responsive, accessible, and user-friendly across all devices.
+Live Site: [mrprince419.github.io/Prince-Uwagboe](https://mrprince419.github.io/Prince-Uwagboe)
 
-## Live Demo
-[Visit my portfolio](https://mrprince419.github.io/Prince-Uwagboe/)
+This is my fully custom-built portfolio, designed to showcase my work in:
+- 📊 Data Analysis (Python, SQL, Power BI, Tableau)
+- ⚙️ Business Automation (CRM, Marketing, AI Workflows)
+- 💡 Scalable Problem Solving with a focus on real-world impact
 
-## Features
-- **Responsive Design**: Optimized for all devices, including small screens like the iPhone SE.
-- **Smooth Scrolling**: Seamless navigation with smooth scrolling for an enhanced user experience.
-- **Interactive Elements**: Includes a functional contact form and a back-to-top button.
-- **Accessibility**: Built with accessibility in mind, ensuring navigability for all users.
-- **Projects Showcase**: Highlights key projects with detailed descriptions, technologies used, and links to source code.
-- **Blog Section**: Shares insights on my technical journey and problem-solving experiences.
+## 💡 Features
+- Fully responsive layout with mobile-first design
+- Filterable project showcase with smooth animations
+- Text-only testimonial carousel (no avatars) with auto-slide + keyboard nav
+- Animated light/dark mode toggle (with localStorage support)
+- Typewriter intro with animated subtitle
+- Contact form with visual feedback and accessibility support
+- Custom CSS animations & glass morphism UI
 
-## Technologies Used
-- **HTML**: Structure of the portfolio.
-- **CSS**: Styling with a focus on responsiveness and accessibility.
-- **JavaScript**: Interactivity features like smooth scrolling, form submission, and dynamic navigation.
-- **Font Awesome**: Icons for social links and navigation.
-- **Google Fonts**: Poppins font for a modern look.
-- **Formspree**: Contact form submission handling.
+## 🧪 Tech Stack
+- HTML, CSS (custom), JavaScript (Vanilla)
+- Font Awesome, Google Fonts (Space Grotesk + Poppins)
+- Animate.css for entry effects
+- Formspree for contact form handling
+
+## 🛠 Build Tools
+- CleanCSS + Terser for CSS/JS minification
+- Live testing via `serve`

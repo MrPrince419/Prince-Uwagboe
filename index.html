@@ -78,58 +78,69 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Skip to content link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Improved navbar with better visibility and fixed position -->
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Main navigation">
     <div class="navbar-container">
-      <a href="#home" class="navbar-logo">
+      <a href="#home" class="navbar-logo" aria-label="Logo, back to home">
         <i class="fas fa-code logo-icon"></i>
       </a>
-      <div class="navbar-menu">
-        <a href="#about" class="nav-item">About</a>
-        <a href="#skills" class="nav-item">Skills</a>
-        <a href="#experience" class="nav-item">Experience</a>
-        <a href="#projects" class="nav-item">Projects</a>
-        <a href="#testimonials" class="nav-item">Testimonials</a>
-        <a href="#focus" class="nav-item">Focus</a>
-        <a href="#contact" class="nav-item">Contact</a>
+      <div class="navbar-menu" id="navbar-menu">
+        <a href="#about" class="nav-item" tabindex="0">About</a>
+        <a href="#skills" class="nav-item" tabindex="0">Skills</a>
+        <a href="#experience" class="nav-item" tabindex="0">Experience</a>
+        <a href="#projects" class="nav-item" tabindex="0">Projects</a>
+        <a href="#testimonials" class="nav-item" tabindex="0">Testimonials</a>
+        <a href="#contact" class="nav-item" tabindex="0">Contact</a>
       </div>
-      <div class="navbar-toggle" aria-label="Toggle navigation menu">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="navbar-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navbar-menu">
         <i class="fas fa-bars"></i>
-      </div>
+      </button>
     </div>
   </nav>
 
   <header id="home" class="header">
     <div class="header-content">
-      <img src="prince-uwagboe-profile.jpg" alt="Profile picture of Prince Uwagboe" class="profile-pic" loading="lazy" onerror="this.src='https://via.placeholder.com/150x150?text=Prince+Uwagboe'">
+      <div class="profile-container">
+        <img src="prince-uwagboe-profile.jpg" alt="Prince Uwagboe" class="profile-pic" loading="lazy" onerror="this.src='https://via.placeholder.com/150?text=Prince+Uwagboe'">
+      </div>
       <h1 class="main-heading">
         <span id="typewriter-text"></span>
         <span class="cursor"></span>
       </h1>
       <p class="sub-heading"></p>
       <div class="header-buttons">
-        <a href="PRINCE UWAGBOE RESUME1.pdf" class="primary-button" download aria-label="Download Prince Uwagboe's resume">
-          <i class="fas fa-download"></i> Download My Resume
+        <a href="#projects" class="primary-button" aria-label="See my work">
+          <i class="fas fa-eye"></i> See My Work
         </a>
-        <a href="#contact" class="secondary-button" aria-label="Contact Prince Uwagboe">
+        <a href="#contact" class="secondary-button" aria-label="Contact me">
           <i class="fas fa-envelope"></i> Contact Me
         </a>
       </div>
     </div>
+    <div class="bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
   </header>
 
-  <main class="content">
+  <main id="main-content" class="content">
     <section id="about" class="section">
-      <div class="section-title">About Me</div>
+      <h2 class="section-title">About Me</h2>
       <div class="section-separator"></div>
       <p class="section-paragraph">
-        I'm Prince Uwagboe — a data analytics + automation nerd using AI to build scalable tools and smarter dashboards.
-        Founder @ClosR Automation | CS student @Algoma | Based in Sault Ste. Marie.
+        I'm Prince Uwagboe — a data analyst and business automation professional with a passion for creating smarter dashboards and scalable tools. Founder of ClosR Automation · CS student at Algoma University · Based in Sault Ste. Marie, Canada.
       </p>
       
       <div class="about-highlights">
         <div class="highlight-section">
-          <h3>💡 Current Projects:</h3>
+          <h3><i class="fas fa-rocket"></i> Current Projects</h3>
           <ul>
             <li>Building interactive business analytics dashboards for data-driven decision making</li>
             <li>Developing automated marketing and CRM systems for streamlined operations</li>
@@ -139,7 +150,7 @@
         </div>
         
         <div class="highlight-section">
-          <h3>🚀 Future Goals:</h3>
+          <h3><i class="fas fa-compass"></i> Future Goals</h3>
           <ul>
             <li>Leading enterprise AI solutions and product teams</li>
             <li>Architecting scalable cloud automation platforms</li>
@@ -150,15 +161,15 @@
       </div>
       
       <div class="social-highlights">
-        <a href="https://github.com/MrPrince419" target="_blank" class="social-highlight">
+        <a href="https://github.com/MrPrince419" target="_blank" rel="noopener" class="social-highlight" aria-label="Visit my GitHub profile">
           <i class="fab fa-github"></i>
           <span>GitHub</span>
         </a>
-        <a href="https://www.linkedin.com/in/prince05/" target="_blank" class="social-highlight">
+        <a href="https://www.linkedin.com/in/prince05/" target="_blank" rel="noopener" class="social-highlight" aria-label="Visit my LinkedIn profile">
           <i class="fab fa-linkedin"></i>
           <span>LinkedIn</span>
         </a>
-        <a href="mailto:uwagboe.o.p@gmail.com" class="social-highlight">
+        <a href="mailto:uwagboe.o.p@gmail.com" class="social-highlight" aria-label="Email me">
           <i class="fas fa-envelope"></i>
           <span>Email</span>
         </a>
@@ -166,100 +177,100 @@
     </section>
 
     <section id="skills" class="section">
-      <h2 class="section-title">Technical Skills</h2>
+      <h2 class="section-title">Technical Toolkit</h2>
       <div class="section-separator"></div>
       <div class="skills-grid">
         <div class="skill-category">
           <h3 class="category-title">Languages &amp; Frameworks</h3>
           <div class="skills-items">
-            <div class="skill-item"><i class="fab fa-python"></i> Python</div>
-            <div class="skill-item"><i class="fas fa-database"></i> SQL</div>
-            <div class="skill-item"><i class="fab fa-java"></i> Java</div>
-            <div class="skill-item"><i class="fab fa-js"></i> JavaScript</div>
-            <div class="skill-item"><i class="fab fa-js"></i> TypeScript</div>
-            <div class="skill-item"><i class="fab fa-react"></i> React.js</div>
-            <div class="skill-item"><i class="fab fa-node-js"></i> Node.js</div>
-            <div class="skill-item"><i class="fab fa-html5"></i> HTML</div>
+            <div class="skill-item" data-tooltip="Python"><i class="fab fa-python"></i></div>
+            <div class="skill-item" data-tooltip="SQL"><i class="fas fa-database"></i></div>
+            <div class="skill-item" data-tooltip="Java"><i class="fab fa-java"></i></div>
+            <div class="skill-item" data-tooltip="JavaScript"><i class="fab fa-js"></i></div>
+            <div class="skill-item" data-tooltip="TypeScript"><i class="fab fa-js"></i></div>
+            <div class="skill-item" data-tooltip="React.js"><i class="fab fa-react"></i></div>
+            <div class="skill-item" data-tooltip="Node.js"><i class="fab fa-node-js"></i></div>
+            <div class="skill-item" data-tooltip="HTML"><i class="fab fa-html5"></i></div>
           </div>
         </div>
         <div class="skill-category">
           <h3 class="category-title">Data &amp; Analytics</h3>
           <div class="skills-items">
-            <div class="skill-item"><i class="fas fa-calculator"></i> Pandas</div>
-            <div class="skill-item"><i class="fas fa-sort-numeric-up"></i> NumPy</div>
-            <div class="skill-item"><i class="fas fa-chart-bar"></i> Power BI</div>
-            <div class="skill-item"><i class="fas fa-chart-pie"></i> Tableau</div>
-            <div class="skill-item"><i class="fas fa-database"></i> PostgreSQL</div>
-            <div class="skill-item"><i class="fas fa-hdd"></i> MongoDB</div>
+            <div class="skill-item" data-tooltip="Pandas"><i class="fas fa-calculator"></i></div>
+            <div class="skill-item" data-tooltip="NumPy"><i class="fas fa-sort-numeric-up"></i></div>
+            <div class="skill-item" data-tooltip="Power BI"><i class="fas fa-chart-bar"></i></div>
+            <div class="skill-item" data-tooltip="Tableau"><i class="fas fa-chart-pie"></i></div>
+            <div class="skill-item" data-tooltip="PostgreSQL"><i class="fas fa-database"></i></div>
+            <div class="skill-item" data-tooltip="MongoDB"><i class="fas fa-hdd"></i></div>
           </div>
         </div>
         <div class="skill-category">
-          <h3 class="category-title">Tools</h3>
+          <h3 class="category-title">Tools &amp; Environments</h3>
           <div class="skills-items">
-            <div class="skill-item"><i class="fab fa-git"></i> Git</div>
-            <div class="skill-item"><i class="fas fa-code"></i> VS Code</div>
-            <div class="skill-item"><i class="fab fa-docker"></i> Docker</div>
-            <div class="skill-item"><i class="fab fa-figma"></i> Figma</div>
-            <div class="skill-item"><i class="fas fa-palette"></i> Canva</div>
-            <div class="skill-item"><i class="fas fa-paint-brush"></i> Adobe XD</div>
+            <div class="skill-item" data-tooltip="Git"><i class="fab fa-git"></i></div>
+            <div class="skill-item" data-tooltip="VS Code"><i class="fas fa-code"></i></div>
+            <div class="skill-item" data-tooltip="Docker"><i class="fab fa-docker"></i></div>
+            <div class="skill-item" data-tooltip="Figma"><i class="fab fa-figma"></i></div>
+            <div class="skill-item" data-tooltip="Canva"><i class="fas fa-palette"></i></div>
+            <div class="skill-item" data-tooltip="Adobe XD"><i class="fas fa-paint-brush"></i></div>
           </div>
         </div>
       </div>
     </section>
 
     <section id="experience" class="section">
-      <h2 class="section-title">Experience</h2>
+      <h2 class="section-title">Professional Experience</h2>
       <div class="section-separator"></div>
       <div class="timeline">
         <div class="timeline-entry">
           <div class="timeline-marker"></div>
           <div class="timeline-content">
-            <h3>Business Automation & Data Analytics Professional</h3>
+            <h3><i class="fas fa-chart-line"></i> Business Automation & Data Analytics Professional</h3>
             <p class="timeline-date">Closr Automations | Jan 2023 - Present</p>
             <ul>
-              <li>Developed automation solutions that reduced operational costs by 45% across multiple client organizations</li>
-              <li>Architected and deployed real-time KPI dashboards using Power BI and Tableau, resulting in 50% faster decision-making for clients</li>
-              <li>Engineered Python automation scripts and API integrations that eliminated 75% of manual processes, saving 200+ work hours monthly</li>
-              <li>Implemented automated data processing systems achieving 99.9% accuracy, processing over 100,000 records daily with zero downtime</li>
+              <li>Engineered automation solutions reducing operational costs by 45% for multiple client organizations</li>
+              <li>Developed real-time KPI dashboards with Power BI and Tableau, accelerating decision-making by 50%</li>
+              <li>Created Python automation scripts and API integrations that eliminated 75% of manual processes</li>
+              <li>Implemented data processing systems achieving 99.9% accuracy across 100,000+ daily records</li>
             </ul>
           </div>
         </div>
         <div class="timeline-entry">
           <div class="timeline-marker"></div>
           <div class="timeline-content">
-            <h3>IT Support Intern</h3>
+            <h3><i class="fas fa-laptop-code"></i> IT Support Intern</h3>
             <p class="timeline-date">Cita Marketplace | Feb 2024 - Jan 2025</p>
             <ul>
-              <li>Played a key role in the deployment and optimization of over 100 computer systems and networks, achieving a 30% reduction in downtime through proactive monitoring and efficient issue resolution strategies.</li>
-              <li>Enhanced troubleshooting efficiency by 30% by restructuring the IT knowledge base to incorporate user-focused insights, fostering improved team collaboration and problem-solving capabilities.</li>
-              <li>Streamlined technical support workflows, reducing average ticket resolution time to under 30 minutes and significantly elevating overall service quality.</li>
-              <li>Contributed to the design and implementation of a comprehensive IT training program, which increased employee technical proficiency by 25% and decreased IT support requests by 15%.</li>
+              <li>Optimized 100+ computer systems and networks, reducing downtime by 30% through proactive monitoring</li>
+              <li>Restructured IT knowledge base with user-focused insights, improving troubleshooting efficiency by 30%</li>
+              <li>Streamlined support workflows, reducing ticket resolution time to under 30 minutes</li>
+              <li>Co-designed comprehensive IT training program, boosting employee technical proficiency by 25%</li>
             </ul>
           </div>
         </div>
         <div class="timeline-entry">
           <div class="timeline-marker"></div>
           <div class="timeline-content">
-            <h3>Volunteer</h3>
+            <h3><i class="fas fa-hands-helping"></i> Volunteer</h3>
             <p class="timeline-date">The Salvation Army | Jan 2023 - May 2023</p>
             <ul>
-              <li>Coordinated food donation drives, ensuring the timely distribution of essential supplies to over 150 families, significantly strengthening community support efforts.</li>
-              <li>Implemented systematic inventory management processes for food donations, improving operational efficiency by 10% through meticulous tracking and effective collaboration with a team of volunteers.</li>
-              <li>Played a key role in event logistics for community outreach programs, showcasing strong organizational and teamwork abilities while meeting tight deadlines.</li>
-              <li>Fostered relationships with local businesses to secure additional donations, increasing the organization's resources by 20% and expanding its capacity to serve more families in need.</li>
+              <li>Coordinated food donation drives serving 150+ families, strengthening community support efforts</li>
+              <li>Implemented inventory management processes, improving operational efficiency by 10%</li>
+              <li>Orchestrated logistics for community outreach events, demonstrating strong organizational skills</li>
+              <li>Secured additional donations from local businesses, expanding resource capacity by 20%</li>
             </ul>
           </div>
         </div>
         <div class="timeline-entry">
           <div class="timeline-marker"></div>
           <div class="timeline-content">
-            <h3>Customer Service Representative</h3>
+            <h3><i class="fas fa-user-friends"></i> Customer Service Representative</h3>
             <p class="timeline-date">Mary's Place | Mar 2022 - Dec 2022</p>
             <ul>
-              <li>Improved customer satisfaction by 20% by addressing concerns with professionalism, clear communication, and tailored problem-solving approaches.</li>
-              <li>Efficiently resolved customer inquiries and complaints, ensuring a positive experience while maintaining high standards of service quality.</li>
-              <li>Assisted in training newly hired team members on customer service protocols, contributing to faster onboarding and improved team performance.</li>
-              <li>Collaborated with senior staff to identify recurring customer issues, proposing process improvements that enhanced overall service efficiency.</li>
+              <li>Elevated customer satisfaction by 20% through professional problem-solving and clear communication</li>
+              <li>Resolved inquiries efficiently while maintaining high service quality standards</li>
+              <li>Trained new team members on customer service protocols, accelerating onboarding processes</li>
+              <li>Identified recurring customer issues and proposed process improvements that enhanced service efficiency</li>
             </ul>
           </div>
         </div>
@@ -267,19 +278,27 @@
     </section>
 
     <section id="projects" class="section">
-      <h2 class="section-title">Featured Projects</h2>
+      <h2 class="section-title">Projects That Solve Real Problems</h2>
       <div class="section-separator"></div>
+      
+      <div class="project-filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="dashboard">Dashboards</button>
+        <button class="filter-btn" data-filter="automation">Automation</button>
+        <button class="filter-btn" data-filter="webapp">Web Apps</button>
+      </div>
+      
       <div class="projects-grid">
-        <div class="project-card">
+        <div class="project-card" data-category="dashboard">
           <div class="project-preview">
-            <img src="images/hospital-dashboard.jpg" alt="Hospital Dashboard Preview" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Hospital+Dashboard'">
+            <img src="healthdashboard.png" alt="Hospital Dashboard Preview" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Hospital+Dashboard'">
           </div>
           <h3 class="project-title">Hospital Data Visualization Dashboard</h3>
-          <p class="project-description">Designed an interactive dashboard in Power BI to visualize hospital performance metrics.</p>
+          <p class="project-description">Interactive healthcare analytics platform visualizing key hospital performance metrics for executive decision-making.</p>
           
           <div class="project-challenges">
             <h4><i class="fas fa-exclamation-circle"></i> Challenges Solved</h4>
-            <p>Integrated diverse data sources and optimized for performance with large datasets. Created intuitive visualizations for non-technical healthcare executives.</p>
+            <p>Integrated diverse data sources and optimized for performance with large healthcare datasets.</p>
           </div>
           
           <div class="project-impact">
@@ -301,22 +320,22 @@
             <a href="Healthcare_Dashboard.pbix" download class="project-button" aria-label="Download Hospital Dashboard">
               <i class="fas fa-download"></i> Download
             </a>
-            <a href="#" class="project-link" target="_blank">
+            <a href="https://github.com/MrPrince419/Healthcare-Dashboard" class="project-link" target="_blank" rel="noopener">
               <i class="fab fa-github"></i> Source
             </a>
           </div>
         </div>
         
-        <div class="project-card">
+        <div class="project-card" data-category="automation">
           <div class="project-preview">
-            <img src="images/closr-automation.jpg" alt="ClosR Automation Website Preview" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=ClosR+Automation'">
+            <img src="closrautomation.png" alt="ClosR Automation Website Preview" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=ClosR+Automation'">
           </div>
           <h3 class="project-title">ClosR Automation Business Website</h3>
-          <p class="project-description">Developed a platform to showcase business automation services.</p>
+          <p class="project-description">Conversion-optimized platform showcasing business automation services and case studies.</p>
           
           <div class="project-challenges">
             <h4><i class="fas fa-exclamation-circle"></i> Challenges Solved</h4>
-            <p>Designed a conversion-optimized site that clearly communicates complex automation services to non-technical business owners.</p>
+            <p>Created intuitive interface that communicates complex automation concepts to non-technical business owners.</p>
           </div>
           
           <div class="project-impact">
@@ -335,25 +354,25 @@
           </div>
           
           <div class="project-links">
-            <a href="https://princeaiautomation.netlify.app" target="_blank" class="project-button" aria-label="View ClosR Automation Website">
+            <a href="https://princeaiautomation.netlify.app" target="_blank" rel="noopener" class="project-button" aria-label="View ClosR Automation Website">
               <i class="fas fa-external-link-alt"></i> Live Demo
             </a>
-            <a href="#" class="project-link" target="_blank">
+            <a href="https://github.com/MrPrince419/closr-automation" class="project-link" target="_blank" rel="noopener">
               <i class="fab fa-github"></i> Source
             </a>
           </div>
         </div>
         
-        <div class="project-card">
+        <div class="project-card" data-category="webapp">
           <div class="project-preview">
-            <img src="images/expense-tracker.jpg" alt="Expense Tracker Preview" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Expense+Tracker'">
+            <img src="expensetracker.png" alt="Expense Tracker Preview" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Expense+Tracker'">
           </div>
           <h3 class="project-title">Modern Expense Tracker</h3>
-          <p class="project-description">A professional expense tracking application with advanced functionality.</p>
+          <p class="project-description">Interactive financial management application with visualization tools and budget insights.</p>
           
           <div class="project-challenges">
             <h4><i class="fas fa-exclamation-circle"></i> Challenges Solved</h4>
-            <p>Created an intuitive interface for complex financial data and implemented efficient data storage with client-side persistence.</p>
+            <p>Designed intuitive interface for complex financial data with efficient client-side persistence.</p>
           </div>
           
           <div class="project-impact">
@@ -372,10 +391,10 @@
           </div>
           
           <div class="project-links">
-            <a href="https://mrprince419.github.io/Expense-Tracker-Dashboard/" target="_blank" class="project-button" aria-label="View Modern Expense Tracker">
+            <a href="https://mrprince419.github.io/Expense-Tracker-Dashboard/" target="_blank" rel="noopener" class="project-button" aria-label="View Modern Expense Tracker">
               <i class="fas fa-external-link-alt"></i> Live Demo
             </a>
-            <a href="https://github.com/MrPrince419/Expense-Tracker-Dashboard" class="project-link" target="_blank">
+            <a href="https://github.com/MrPrince419/Expense-Tracker-Dashboard" class="project-link" target="_blank" rel="noopener">
               <i class="fab fa-github"></i> Source
             </a>
           </div>
@@ -383,103 +402,39 @@
       </div>
     </section>
 
-    <section id="testimonials" class="section">
+    <section id="testimonials" class="section testimonials">
       <h2 class="section-title">What People Say</h2>
       <div class="section-separator"></div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <i class="fas fa-quote-left quote-icon"></i>
-            <p>Prince is incredibly proactive and solution-oriented. He built an automation solution that saved our team hours of manual work weekly.</p>
-            <div class="testimonial-author">
-              <div class="author-info">
-                <h4>Sarah Johnson</h4>
-                <p>Marketing Director, TechFlow Solutions</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <i class="fas fa-quote-left quote-icon"></i>
-            <p>His data analysis skills are remarkable. Prince transformed our complex datasets into actionable insights that drove key business decisions.</p>
-            <div class="testimonial-author">
-              <div class="author-info">
-                <h4>Dr. Michael Chen</h4>
-                <p>Professor, Algoma University</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <i class="fas fa-quote-left quote-icon"></i>
-            <p>Working with Prince was a game-changer for our project. His attention to detail and technical expertise helped us meet our goals ahead of schedule.</p>
-            <div class="testimonial-author">
-              <div class="author-info">
-                <h4>James Rodriguez</h4>
-                <p>Project Manager, DataSmart Analytics</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="testimonial-carousel">
+        <blockquote class="testimonial active">
+          <p>"Prince's dashboards simplified how we interpret data — fast, accurate, and effective."</p>
+          <footer>— Director, Healthcare Client</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>"Our workflow automation saved us over 20 hours weekly. Prince understood the challenge and delivered fast."</p>
+          <footer>— Founder, SaaS Business</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>"Prince is both highly technical and great with communication. He made complex solutions feel simple."</p>
+          <footer>— University Teammate</footer>
+        </blockquote>
       </div>
-    </section>
-
-    <section id="focus" class="section">
-      <h2 class="section-title">Current Focus & Goals</h2>
-      <div class="section-separator"></div>
-      <div class="focus-grid">
-        <div class="focus-card">
-          <h3>Interactive Analytics Dashboards</h3>
-          <p>Developing sophisticated business intelligence dashboards that transform complex data into actionable insights. Using Power BI, Tableau, and custom solutions to help businesses visualize KPIs and make data-driven decisions with confidence and precision.</p>
-        </div>
-        <div class="focus-card">
-          <h3>Automated Marketing & CRM Systems</h3>
-          <p>Creating end-to-end marketing automation and CRM solutions that streamline customer engagement, lead generation, and relationship management. Implementing intelligent workflows that reduce manual effort while increasing personalization and conversion rates.</p>
-        </div>
-        <div class="focus-card">
-          <h3>Scalable Web Applications</h3>
-          <p>Designing and developing enterprise-grade web applications that solve specific business challenges. Focusing on responsive, accessible interfaces backed by robust architecture that can scale seamlessly with growing business needs.</p>
-        </div>
-        <div class="focus-card">
-          <h3>Intelligent Data Processing Pipelines</h3>
-          <p>Building advanced data processing systems that automate extraction, transformation, and loading of business data. Implementing AI-driven data cleaning and enrichment processes to ensure data integrity and maximize analytical value.</p>
-        </div>
-      </div>
-      <h3 class="subsection-title">Future Goals</h3>
-      <div class="goals-grid">
-        <div class="focus-card">
-          <h3>Enterprise AI Leadership</h3>
-          <p>Aiming to lead cross-functional teams in developing and implementing comprehensive AI solutions for enterprise-level challenges. Creating AI-driven systems that optimize operations, enhance decision-making, and drive strategic business growth.</p>
-        </div>
-        <div class="focus-card">
-          <h3>Scalable Cloud Architecture</h3>
-          <p>Working toward mastery in designing and implementing scalable cloud automation platforms. Building infrastructure that combines serverless computing, containerization, and microservices to provide resilient, cost-effective solutions for businesses of all sizes.</p>
-        </div>
-        <div class="focus-card">
-          <h3>Advanced ML Research & Implementation</h3>
-          <p>Conducting cutting-edge research in machine learning with a focus on practical applications. Developing production-ready models that can solve complex business problems through predictive analytics, natural language processing, and computer vision.</p>
-        </div>
-        <div class="focus-card">
-          <h3>Innovative Data Processing Systems</h3>
-          <p>Creating next-generation data processing pipelines that leverage distributed computing and real-time analytics. Building systems that can handle massive datasets while providing instant insights and adapting to changing business requirements.</p>
-        </div>
+      <div class="testimonial-nav">
+        <button class="testimonial-prev" aria-label="Previous testimonial">←</button>
+        <button class="testimonial-next" aria-label="Next testimonial">→</button>
       </div>
     </section>
 
     <section id="contact" class="section">
       <h2 class="section-title">Contact Me</h2>
       <div class="section-separator"></div>
-      <p class="section-paragraph">I'm always interested in hearing about new projects and opportunities. Feel free to reach out using the form below or connect with me directly through my social profiles.</p>
+      <p class="section-paragraph">I'm always interested in hearing about new projects and opportunities. Feel free to reach out using the form below or connect with me directly.</p>
       <div class="contact-container">
         <div class="contact-info">
           <h3 class="connect-title">Let's Connect</h3>
           <div class="contact-item">
             <i class="fas fa-envelope contact-icon"></i>
-            <a href="mailto:uwagboe.o.p@gmail.com" class="contact-link">uwagboe.o.p@gmail.com</a>
+            <a href="mailto:uwagboe.o.p@gmail.com" class="contact-link" aria-label="Email me at uwagboe.o.p@gmail.com">uwagboe.o.p@gmail.com</a>
           </div>
           <div class="contact-item">
             <i class="fas fa-map-marker-alt contact-icon"></i>
@@ -487,11 +442,11 @@
           </div>
           <div class="contact-item">
             <i class="fab fa-github contact-icon"></i>
-            <a href="https://github.com/MrPrince419" target="_blank" class="contact-link">github.com/MrPrince419</a>
+            <a href="https://github.com/MrPrince419" target="_blank" rel="noopener" class="contact-link" aria-label="Visit my GitHub profile">github.com/MrPrince419</a>
           </div>
           <div class="contact-item">
             <i class="fab fa-linkedin contact-icon"></i>
-            <a href="https://www.linkedin.com/in/prince05/" target="_blank" class="contact-link">linkedin.com/in/prince05</a>
+            <a href="https://www.linkedin.com/in/prince05/" target="_blank" rel="noopener" class="contact-link" aria-label="Visit my LinkedIn profile">linkedin.com/in/prince05</a>
           </div>
           <div class="contact-availability">
             <h4>Availability</h4>
@@ -505,46 +460,47 @@
         <div class="contact-form-container">
           <form id="contact-form" class="contact-form">
             <div class="form-group">
-              <label for="name">Name</label>
-              <div class="input-with-icon">
+              <div class="floating-label">
+                <input type="text" id="name" name="name" required aria-required="true" placeholder=" ">
+                <label for="name">Name</label>
                 <i class="fas fa-user input-icon"></i>
-                <input type="text" id="name" name="name" placeholder="Your name" required aria-required="true">
               </div>
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
-              <div class="input-with-icon">
+              <div class="floating-label">
+                <input type="email" id="email" name="email" required aria-required="true" placeholder=" ">
+                <label for="email">Email</label>
                 <i class="fas fa-envelope input-icon"></i>
-                <input type="email" id="email" name="email" placeholder="Your email address" required aria-required="true">
               </div>
             </div>
             <div class="form-group">
-              <label for="subject">Subject</label>
-              <div class="input-with-icon">
-                <i class="fas fa-briefcase input-icon"></i>
+              <div class="floating-label">
                 <select id="subject" name="subject" required aria-required="true">
-                  <option value="" disabled selected>Select a subject</option>
+                  <option value="" disabled selected></option>
                   <option value="Job Opportunity">Job Opportunity</option>
                   <option value="Freelance Project">Freelance Project</option>
                   <option value="Collaboration">Collaboration</option>
                   <option value="Feedback">Feedback</option>
                   <option value="Other">Other</option>
                 </select>
+                <label for="subject">Subject</label>
+                <i class="fas fa-briefcase input-icon"></i>
               </div>
             </div>
             <div class="form-group">
-              <label for="message">Message</label>
-              <div class="textarea-container">
-                <textarea id="message" name="message" placeholder="Tell me about your project or inquiry..." required aria-required="true" maxlength="500"></textarea>
+              <div class="floating-label textarea-container">
+                <textarea id="message" name="message" required aria-required="true" maxlength="500" placeholder=" "></textarea>
+                <label for="message">Message</label>
                 <div class="character-counter"><span id="char-count">0</span>/500</div>
               </div>
             </div>
             <div class="form-controls">
               <button type="submit" class="submit-button" aria-label="Send message">
-                <i class="fas fa-paper-plane"></i> Send Message
+                <span class="button-text"><i class="fas fa-paper-plane"></i> Send Message</span>
+                <span class="button-success"><i class="fas fa-check"></i> Sent!</span>
               </button>
               <button type="reset" class="reset-button" aria-label="Reset form">
-                <i class="fas fa-redo"></i> Reset
+                <i class="fas fa-redo"></i> Clear
               </button>
             </div>
             <div id="form-message" class="form-message"></div>
@@ -554,37 +510,53 @@
     </section>
   </main>
 
-  <footer class="footer">
+  <!-- Enhanced footer with improved accessibility -->
+  <footer class="footer" role="contentinfo">
     <div class="footer-container">
       <div class="footer-column">
         <h3 class="footer-title">Prince Uwagboe</h3>
         <p class="footer-tagline">Data Analytics & Automation Professional</p>
+        <p class="footer-bio">Transforming business data into smart, scalable solutions through automation and analytics.</p>
       </div>
       <div class="footer-column">
         <h3 class="footer-title">Quick Links</h3>
-        <ul class="footer-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#skills">Skills</a></li>
+        <ul class="footer-links" role="navigation" aria-label="Footer navigation">
+          <li><a href="#home" aria-label="Go to Home section">Home</a></li>
+          <li><a href="#about" aria-label="Go to About section">About</a></li>
+          <li><a href="#skills" aria-label="Go to Technical Toolkit section">Technical Toolkit</a></li>
+          <li><a href="#experience" aria-label="Go to Professional Experience section">Experience</a></li>
+          <li><a href="#projects" aria-label="Go to Projects section">Projects</a></li>
+          <li><a href="#testimonials" aria-label="Go to Testimonials section">Testimonials</a></li>
+          <li><a href="#contact" aria-label="Go to Contact section">Contact</a></li>
         </ul>
       </div>
       <div class="footer-column">
         <h3 class="footer-title">Connect</h3>
-        <div class="footer-social">
-          <a href="mailto:uwagboe.o.p@gmail.com" aria-label="Email Prince Uwagboe"><i class="fas fa-envelope"></i></a>
-          <a href="https://github.com/MrPrince419" target="_blank" aria-label="Visit Prince Uwagboe's GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/prince05/" target="_blank" aria-label="Visit Prince Uwagboe's LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <div class="footer-social" role="navigation" aria-label="Social media links">
+          <a href="mailto:uwagboe.o.p@gmail.com" aria-label="Email Prince Uwagboe" data-tooltip="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+          <a href="https://github.com/MrPrince419" target="_blank" rel="noopener" aria-label="Visit Prince Uwagboe's GitHub profile" data-tooltip="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/prince05/" target="_blank" rel="noopener" aria-label="Visit Prince Uwagboe's LinkedIn profile" data-tooltip="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2024 Prince Uwagboe. All rights reserved.</p>
+      <p>&copy; <span id="current-year">2024</span> Prince Uwagboe. All rights reserved.</p>
+      <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
     </div>
   </footer>
-  <button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
-  <script src="script.js"></script>
+  
+  <button id="back-to-top" aria-label="Back to top" title="Scroll to top of page"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
+  
+  <!-- Deferred scripts for performance -->
+  <script defer src="script.js"></script>
+  
+  <!-- Minify these for production -->
+  <!-- <script defer src="script.min.js"></script> -->
+  
+  <noscript>
+    <div class="noscript-message">
+      This website works best with JavaScript enabled. Some features may not work properly without it.
+    </div>
+  </noscript>
 </body>
 </html>

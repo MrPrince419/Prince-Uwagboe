@@ -1,0 +1,27 @@
+{
+  "name": "prince-uwagboe-portfolio",
+  "version": "1.0.0",
+  "description": "Prince Uwagboe's Professional Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "build": "node convert-images.js && node minify.js",
+    "minify-css": "cleancss -o styles.min.css styles.css",
+    "minify-js": "terser script.js -c -m -o script.min.js",
+    "optimize-images": "node convert-images.js"
+  },
+  "keywords": [
+    "portfolio",
+    "data-analyst",
+    "business-automation",
+    "personal-website"
+  ],
+  "author": "Prince Uwagboe",
+  "license": "MIT",
+  "devDependencies": {
+    "clean-css": "^5.3.2",
+    "clean-css-cli": "^5.6.2",
+    "serve": "^14.2.1",
+    "terser": "^5.20.0"
+  }
+}
